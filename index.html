@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash-Think</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        
+        <div class="logo">
+            <img src="logo.png" class="log"> Flash-Think
+        </div>
+        <nav>
+            <button onclick="window.location.href='index.html'">Inicio</button>
+            <button onclick="window.location.href='ver_ideas.html'">Ver Ideas</button>
+            <button onclick="window.location.href='mis_ideas.html'">Mis Ideas</button>
+        </nav>
+        <div class="user-profile">
+            User-Prueba
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <main>
+            <div class="idea-input">
+                <h2>Contribuye al crecimiento de nuestra universidad</h2>
+                <div class="input-container">
+                    <img src="perfil.png" alt="User" class="avatar">
+                    <input type="text" id="newIdeaText" placeholder="Propón tu idea...">
+                    <button id="publishBtn"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div id="ideasContainer" class="ideas-list">
+                <!-- Las ideas se insertarán aquí dinámicamente -->
+            </div>
+        </main>
+
+        <aside>
+            <div class="recent-ideas">
+                <h2 style="text-align: center;">Ideas Recientes</h2>
+                <!-- Las ideas recientes se insertarán aquí dinámicamente -->
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

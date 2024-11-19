@@ -1,0 +1,306 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+header {
+    background-color: #1877f2;
+    color: white;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.log {
+    width: 40px;
+}
+nav button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+nav button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.user-profile {
+    background-color: #e41e3f;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-content {
+    display: flex;
+    margin-top: 20px;
+}
+
+main {
+    flex: 2;
+    margin-right: 20px;
+}
+
+aside {
+    flex: 1;
+}
+
+.idea-input, .ideas-list > div, .recent-ideas {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.idea-input h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #65676b;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-container input {
+    flex-grow: 1;
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.input-container button {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 10px 11px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.idea-card {
+    border-bottom: 1px solid #e4e6eb;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.idea-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.idea-header img {
+    margin-right: 10px;
+}
+
+.idea-header span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.idea-header span:last-child {
+    color: #65676b;
+    font-weight: normal;
+}
+
+.idea-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #65676b;
+}
+
+.votes button {
+    background: none;
+    border: none;
+    color: #65676b;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+.votes button:hover {
+    background-color: #f0f2f5;
+    border-radius: 4px;
+}
+
+.recent-ideas h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.recent-idea {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+}
+
+.recent-idea img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.recent-idea-content {
+    flex-grow: 1;
+}
+
+.recent-idea-content h3 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.recent-idea-content p {
+    margin: 0;
+    font-size: 12px;
+    color: #65676b;
+}
+
+.votes button.voted {
+    color: #1877f2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos adicionales para la página de perfil */
+.profile-card {
+    background-color: #fff8dc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.profile-actions {
+    margin-top: 10px;
+}
+
+.profile-actions button {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.profile-actions button:hover {
+    background-color: #0056b3;
+}
+
+.voted-card {
+    background-color: #fff8e1;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+.voted-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.voted-user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.voting-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #65676b;
+}
+
+.settings-card {
+    background-color: #fff8e1;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.settings-card h2 {
+    margin: 0 0 10px 0;
+}
+
+.setting-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}

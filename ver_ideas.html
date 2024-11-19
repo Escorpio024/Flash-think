@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash-Think</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" class="log"> Flash-Think
+        </div>
+        <nav>
+            <button onclick="window.location.href='index.html'">Inicio</button>
+            <button onclick="window.location.href='ver_ideas.html'">Ver Ideas</button>
+            <button onclick="window.location.href='mis_ideas.html'">Mis Ideas</button>
+        </nav>
+        <div class="user-profile">User-Prueba</div>
+    </header>
+
+    <h2 style="text-align: center;">Ideas Recientes</h2>
+    <div class="container main-content">
+        <main>
+            <div id="recentIdeasContainer1" class="ideas-list">
+                <!-- Las ideas recientes se insertarán aquí dinámicamente -->
+            </div>
+        </main>
+        <main>
+            <div id="recentIdeasContainer2" class="ideas-list">
+                <!-- Las ideas recientes se insertarán aquí dinámicamente -->
+            </div>
+        </main>
+    </div>
+
+    <h2 style="text-align: center;">Ideas Relevantes</h2>
+    <div class="container main-content">
+        <main>
+            <div id="relevantIdeasContainer1" class="ideas-list">
+                <!-- Las ideas relevantes se insertarán aquí dinámicamente -->
+            </div>
+        </main>
+        <main>
+            <div id="relevantIdeasContainer2" class="ideas-list">
+                <!-- Las ideas relevantes se insertarán aquí dinámicamente -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const recentIdeasContainers = [
+                document.getElementById('recentIdeasContainer1'),
+                document.getElementById('recentIdeasContainer2')
+            ];
+            const relevantIdeasContainers = [
+                document.getElementById('relevantIdeasContainer1'),
+                document.getElementById('relevantIdeasContainer2')
+            ];
+
+            // Cargar ideas existentes
+            loadRecentIdeas();
+            loadRelevantIdeas();
+
+            function loadRecentIdeas() {
+                const recentIdeas = [
+                    { id: 1, user: 'Jose Prueba', date: 'Agosto 22', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', upvotes: 99, downvotes: 10 },
+                    { id: 2, user: 'Pepe Prueba', date: 'Agosto 15', text: 'Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.', upvotes: 70, downvotes: 5 },
+                    { id: 3, user: 'Jose Prueba', date: 'Agosto 22', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', upvotes: 99, downvotes: 10 },
+                    { id: 4, user: 'Pepe Prueba', date: 'Agosto 15', text: 'Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.', upvotes: 70, downvotes: 5 },
+                ];
+
+                recentIdeas.forEach((idea, index) => {
+                    const ideaElement = createIdeaElement(idea);
+                    const containerIndex = index % recentIdeasContainers.length;
+                    recentIdeasContainers[containerIndex].appendChild(ideaElement);
+                });
+            }
+
+            function loadRelevantIdeas() {
+                const relevantIdeas = [
+                    { id: 1, user: 'Jose Prueba', date: 'Agosto 22', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', upvotes: 99, downvotes: 10 },
+                    { id: 2, user: 'Pepe Prueba', date: 'Agosto 15', text: 'Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.', upvotes: 70, downvotes: 5 }
+                ];
+
+                relevantIdeas.forEach((idea, index) => {
+                    const ideaElement = createIdeaElement(idea);
+                    const containerIndex = index % relevantIdeasContainers.length;
+                    relevantIdeasContainers[containerIndex].appendChild(ideaElement);
+                });
+            }
+
+            function createIdeaElement(idea) {
+                const ideaDiv = document.createElement('div');
+                ideaDiv.className = 'idea-card';
+                ideaDiv.dataset.id = idea.id;
+                ideaDiv.dataset.userVote = '0';
+                ideaDiv.innerHTML = `
+                    <div class="idea-header">
+                        <img src="/api/placeholder/32/32" alt="User" class="avatar">
+                        <span class="font-semibold">${idea.user}</span>
+                        <span class="text-gray-500 text-sm ml-2">${idea.date}</span>
+                    </div>
+                    <p class="mb-4">${idea.text}</p>
+                    <div class="idea-footer">
+                        <div class="votes">
+                            <button class="upvote"><i class="fas fa-arrow-up"></i> <span class="upvote-count">${idea.upvotes}</span></button>
+                            <button class="downvote"><i class="fas fa-arrow-down"></i> <span class="downvote-count">${idea.downvotes}</span></button>
+                        </div>
+                        <button class="comment"><i class="fas fa-comment"></i> </button>
+                    </div>
+                `;
+
+                const upvoteBtn = ideaDiv.querySelector('.upvote');
+                const downvoteBtn = ideaDiv.querySelector('.downvote');
+                const upvoteCount = ideaDiv.querySelector('.upvote-count');
+                const downvoteCount = ideaDiv.querySelector('.downvote-count');
+
+                upvoteBtn.addEventListener('click', () => handleVote(ideaDiv, 1, upvoteCount, downvoteCount));
+                downvoteBtn.addEventListener('click', () => handleVote(ideaDiv, -1, upvoteCount, downvoteCount));
+
+                return ideaDiv;
+            }
+
+            function handleVote(ideaDiv, voteValue, upvoteCountElement, downvoteCountElement) {
+                const currentVote = parseInt(ideaDiv.dataset.userVote);
+                let newVote = 0;
+
+                if (currentVote === voteValue) {
+                    newVote = 0;
+                    voteValue === 1 ? decrementCount(upvoteCountElement) : decrementCount(downvoteCountElement);
+                } else {
+                    newVote = voteValue;
+                    if (currentVote !== 0) {
+                        currentVote === 1 ? decrementCount(upvoteCountElement) : decrementCount(downvoteCountElement);
+                    }
+                    voteValue === 1 ? incrementCount(upvoteCountElement) : incrementCount(downvoteCountElement);
+                }
+
+                ideaDiv.dataset.userVote = newVote.toString();
+                updateVoteButtonStyles(ideaDiv);
+            }
+
+            function incrementCount(element) {
+                element.textContent = parseInt(element.textContent) + 1;
+            }
+
+            function decrementCount(element) {
+                element.textContent = parseInt(element.textContent) - 1;
+            }
+
+            function updateVoteButtonStyles(ideaDiv) {
+                const upvoteBtn = ideaDiv.querySelector('.upvote');
+                const downvoteBtn = ideaDiv.querySelector('.downvote');
+                const userVote = parseInt(ideaDiv.dataset.userVote);
+
+                upvoteBtn.classList.toggle('voted', userVote === 1);
+                downvoteBtn.classList.toggle('voted', userVote === -1);
+            }
+        });
+    </script>
+</body>
+
+</html>
